@@ -4,13 +4,13 @@ $conn = mysqli_connect('localhost', 'root', '', 'millon');
 
 $start_time = microtime(true);
 for ($i = 1; $i <= 100; $i++) {
-    $query = "INSERT INTO tabla (campo1, campo2, campo3) VALUES ";
+    $query = "INSERT INTO tabla (temp, hum) VALUES ";
     for ($j = 1; $j <= 11000; $j++) {
-        $index = rand(0, 100);
-        $campo1_ = "campo1_" . $index;
-        $campo2_ = "campo2_" . $index;
-        $campo3_ = "campo3_" . $index;
-        $query .= "('$campo1_', '$campo2_', '$campo3_'),";
+        $temp = rand(0, 100);
+        $hum = rand(0, 100);
+        $campo1_ = $temp;
+        $campo2_ = $hum;
+        $query .= "('$campo1_', '$campo2_'),";
     }
     $query = rtrim($query, ',');
     mysqli_query($conn, $query);
